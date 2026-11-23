@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Cyrus Sy — coming soon." />
+    <link rel="icon" href="data:," />
+    <title>Coming Soon</title>
+    <style>
+      :root {
+        --bg: #fcfcfa;
+        --ink: #1a1a18;
+        --muted: #6b6b66;
+        --rule: #e3e3de;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #141412;
+          --ink: #ecece8;
+          --muted: #9a9a94;
+          --rule: #2c2c29;
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: ui-sans-system, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.25rem;
+      }
+      main {
+        max-width: 32rem;
+        width: 100%;
+        text-align: center;
+      }
+      .name {
+        font-size: 0.8125rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1.75rem;
+        font-weight: 600;
+      }
+      h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: clamp(2.5rem, 9vw, 3.75rem);
+        line-height: 1.05;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        margin: 0 0 1rem;
+      }
+      .lede {
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0 auto;
+        max-width: 24rem;
+      }
+      .rule {
+        width: 2.5rem;
+        height: 1px;
+        background: var(--rule);
+        margin: 2rem auto 0;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="name">Cyrus Sy</p>
+      <h1>Coming soon</h1>
+      <p class="lede">A new site is on the way. Writing on marketing, AI, running, and building useful systems — arriving shortly.</p>
+      <hr class="rule" />
+    </main>
+  </body>
+</html>
