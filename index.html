@@ -4,9 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="Cyrus Sy — coming soon." />
-    <link rel="icon" href="data:," />
-    <title>Coming Soon</title>
+    <meta name="description" content="Cyrus Sy writes about B2B product marketing, AI, running, and building useful systems. New site coming soon." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://launchpadco.ca/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://launchpadco.ca/" />
+    <meta property="og:title" content="Cyrus Sy" />
+    <meta property="og:description" content="Writing on B2B product marketing, AI, running, and building useful systems. Coming soon." />
+    <meta property="og:image" content="https://launchpadco.ca/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Cyrus Sy · Coming soon</title>
     <style>
       :root {
         --bg: #fcfcfa;
@@ -28,7 +37,7 @@
         margin: 0;
         background: var(--bg);
         color: var(--ink);
-        font-family: ui-sans-system, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         display: flex;
         align-items: center;
@@ -63,6 +72,29 @@
         margin: 0 auto;
         max-width: 24rem;
       }
+      .bio {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 auto 1.25rem;
+        max-width: 26rem;
+      }
+      .links {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 1.75rem 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 0.9375rem;
+      }
+      .links a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 2px;
+      }
+      .links a:hover, .links a:focus-visible { border-color: var(--ink); }
       .rule {
         width: 2.5rem;
         height: 1px;
@@ -76,7 +108,15 @@
     <main>
       <p class="name">Cyrus Sy</p>
       <h1>Coming soon</h1>
-      <p class="lede">A new site is on the way. Writing on marketing, AI, running, and building useful systems — arriving shortly.</p>
+      <p class="bio">I'm a B2B product marketer with an engineering background, working in wireless, IoT, and connected fleets.</p>
+      <p class="lede">A new site is on the way, with writing on marketing, AI, running, and building useful systems.</p>
+      <!-- Email signup goes here once a provider is chosen. -->
+      <ul class="links">
+        <!-- TODO before merge: add real URLs.
+        <li><a href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a></li>
+        <li><a href="mailto:YOU@EXAMPLE.COM">Email</a></li>
+        -->
+      </ul>
       <hr class="rule" />
     </main>
   </body>
