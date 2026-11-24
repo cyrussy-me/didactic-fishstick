@@ -4,80 +4,484 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="Cyrus Sy — coming soon." />
     <link rel="icon" href="data:," />
-    <title>Coming Soon</title>
+    <title>Cyrus Sy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #fcfcfa;
-        --ink: #1a1a18;
-        --muted: #6b6b66;
-        --rule: #e3e3de;
+        --paper: #faf4e8;
+        --paper-edge: #f1e8d5;
+        --ink: #211d15;
+        --ink-soft: #57503f;
+        --ink-faint: #8a8171;
+        --link: #1b3fae;
+        --link-visited: #5b3a8e;
+        --rule: #ddd2ba;
+        --hl-pink: #f6cdd3;
+        --hl-blue: #c3d4f5;
+        --hl-lilac: #ddd0f2;
+        --hl-green: #cfe5c8;
+        --chip-bg: transparent;
+        --chip-on-bg: #211d15;
+        --chip-on-ink: #faf4e8;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #141412;
-          --ink: #ecece8;
-          --muted: #9a9a94;
-          --rule: #2c2c29;
+          --paper: #171410;
+          --paper-edge: #100e0a;
+          --ink: #ece4d2;
+          --ink-soft: #b6ab94;
+          --ink-faint: #857c68;
+          --link: #93b1ff;
+          --link-visited: #c3a6f5;
+          --rule: #38322a;
+          --hl-pink: #5c3038;
+          --hl-blue: #2c4476;
+          --hl-lilac: #443461;
+          --hl-green: #2f4a2c;
+          --chip-on-bg: #ece4d2;
+          --chip-on-ink: #171410;
         }
       }
+
       * { box-sizing: border-box; }
-      html, body { height: 100%; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
       body {
         margin: 0;
-        background: var(--bg);
+        background: var(--paper);
         color: var(--ink);
-        font-family: ui-sans-system, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-size: 1.1875rem;
+        line-height: 1.55;
         -webkit-font-smoothing: antialiased;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 1.25rem;
       }
-      main {
-        max-width: 32rem;
-        width: 100%;
-        text-align: center;
-      }
-      .name {
-        font-size: 0.8125rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin: 0 0 1.75rem;
-        font-weight: 600;
-      }
-      h1 {
-        font-family: Georgia, "Times New Roman", Times, serif;
-        font-size: clamp(2.5rem, 9vw, 3.75rem);
-        line-height: 1.05;
-        font-weight: 400;
-        letter-spacing: -0.01em;
-        margin: 0 0 1rem;
-      }
-      .lede {
-        font-size: 1.0625rem;
-        line-height: 1.6;
-        color: var(--muted);
+      ::selection { background: var(--hl-blue); }
+
+      .page {
+        max-width: 42rem;
         margin: 0 auto;
-        max-width: 24rem;
+        padding: 3.5rem 1.5rem 4rem;
       }
-      .rule {
-        width: 2.5rem;
-        height: 1px;
-        background: var(--rule);
-        margin: 2rem auto 0;
-        border: 0;
+
+      a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+      a:visited { color: var(--link-visited); }
+      a:hover { text-decoration-thickness: 2px; }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--link);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .mono {
+        font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      }
+
+      /* ---------- header ---------- */
+      h1.name {
+        font-size: clamp(2.6rem, 8vw, 3.6rem);
+        font-weight: 700;
+        font-variant: small-caps;
+        letter-spacing: 0.04em;
+        line-height: 1.05;
+        margin: 0 0 0.4rem;
+      }
+      .tagline {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 1.15rem;
+        margin: 0 0 2.4rem;
+      }
+      .bio-lines {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        margin-bottom: 1.4rem;
+      }
+      .bio-lines p { margin: 0 0 1.1rem; }
+      .hl { padding: 0 3px; border-radius: 2px; color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+      .hl:visited { color: inherit; }
+      .hl-pink { background: var(--hl-pink); }
+      .hl-blue { background: var(--hl-blue); }
+      .hl-lilac { background: var(--hl-lilac); }
+      .hl-green { background: var(--hl-green); }
+
+      nav.topnav {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.95rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.6rem;
+        padding: 1rem 0 0;
+        border-top: 1px solid var(--rule);
+        margin-top: 2.2rem;
+      }
+      nav.topnav a {
+        color: var(--ink-soft);
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.25rem;
+      }
+      nav.topnav a:visited { color: var(--ink-soft); }
+      nav.topnav a:hover { color: var(--link); }
+
+      /* ---------- sections ---------- */
+      section { margin-top: 4.2rem; }
+      h2 {
+        font-size: clamp(1.7rem, 5vw, 2.1rem);
+        font-weight: 700;
+        font-variant: small-caps;
+        letter-spacing: 0.05em;
+        line-height: 1.15;
+        margin: 0 0 1.4rem;
+      }
+      h2 .q { color: var(--ink-faint); }
+      p { margin: 0 0 1.1rem; }
+      .lede { font-size: 1.28rem; line-height: 1.5; }
+
+      .chapter { margin: 0 0 1.05rem; }
+      .chapter .era {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        color: var(--ink-faint);
+        white-space: nowrap;
+      }
+
+      .now-box {
+        border: 1px solid var(--rule);
+        background: var(--paper-edge);
+        padding: 1.4rem 1.5rem 0.6rem;
+        border-radius: 6px;
+      }
+      .now-box ul { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+      .now-box li { margin-bottom: 0.55rem; }
+      .updated {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+        margin-top: 1rem;
+      }
+
+      /* ---------- writing ---------- */
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.8rem;
+      }
+      .filters button {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.9rem;
+        min-height: 2.5rem;
+        padding: 0.45rem 1rem;
+        border: 1px solid var(--ink-soft);
+        border-radius: 999px;
+        background: var(--chip-bg);
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .filters button:hover { border-color: var(--ink); }
+      .filters button[aria-pressed="true"] {
+        background: var(--chip-on-bg);
+        color: var(--chip-on-ink);
+        border-color: var(--chip-on-bg);
+      }
+      .filters button[aria-pressed="true"]:hover { border-color: var(--chip-on-bg); }
+
+      article.post {
+        display: grid;
+        grid-template-columns: 5.2rem 1fr;
+        column-gap: 1.2rem;
+        padding: 1.15rem 0;
+        border-top: 1px solid var(--rule);
+      }
+      article.post:first-of-type { border-top: none; padding-top: 0.2rem; }
+      article.post[hidden] { display: none; }
+      .post .date {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+        text-align: right;
+        padding-top: 0.45rem;
+        line-height: 1.5;
+      }
+      .post h3 {
+        font-size: 1.45rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 0 0 0.35rem;
+      }
+      .post h3 a { color: var(--ink); text-decoration: none; }
+      .post h3 a:visited { color: var(--ink); }
+      .post h3 a:hover { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+      .post .topic {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin: 0 0 0.4rem;
+      }
+      .post .summary { color: var(--ink-soft); margin: 0; font-size: 1.08rem; }
+      .empty-note {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.95rem;
+        color: var(--ink-faint);
+        padding: 1rem 0;
+      }
+
+      /* ---------- projects ---------- */
+      .project { margin: 0 0 1.5rem; }
+      .project h3 { font-size: 1.3rem; font-weight: 600; margin: 0 0 0.2rem; }
+      .project p { color: var(--ink-soft); margin: 0; font-size: 1.08rem; }
+      .status {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        margin-top: 4.5rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--rule);
+      }
+      footer .elsewhere {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.95rem;
+        line-height: 2;
+      }
+      footer .elsewhere a { display: inline-flex; align-items: center; min-height: 2.25rem; }
+      .colophon {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        color: var(--ink-faint);
+        margin-top: 2rem;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 560px) {
+        .page { padding: 2.4rem 1.2rem 3rem; }
+        article.post { grid-template-columns: 1fr; }
+        .post .date { text-align: left; padding-top: 0; margin-bottom: 0.25rem; }
+        .post .date br { display: none; }
+        section { margin-top: 3.4rem; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p class="name">Cyrus Sy</p>
-      <h1>Coming soon</h1>
-      <p class="lede">A new site is on the way. Writing on marketing, AI, running, and building useful systems — arriving shortly.</p>
-      <hr class="rule" />
-    </main>
+    <div class="page">
+
+      <header>
+        <h1 class="name">Cyrus Sy</h1>
+        <p class="tagline">(Everything here is mine — written in the evenings, usually after the dog's last walk.)</p>
+
+        <div class="bio-lines">
+          <p>product marketer, runner, dad.<br />
+          new westminster, bc — up before the house, most days.</p>
+          <p>currently building a <a class="hl hl-pink" href="#projects">win/loss insights program</a> at airgain.<br />
+          training for <a class="hl hl-blue" href="#now">hyrox in december</a>, and a sub-3:30 marathon after that.<br />
+          co-chairing the <a class="hl hl-lilac" href="#projects">new westminster dpac</a>.<br />
+          writing most nights, <a class="hl hl-green" href="#writing">ten minutes at a time</a>.</p>
+        </div>
+
+        <nav class="topnav" aria-label="Sections">
+          <a href="#me">me in 10 seconds</a>
+          <a href="#now">now</a>
+          <a href="#writing">writing</a>
+          <a href="#projects">projects</a>
+          <a href="#hello">say hello</a>
+        </nav>
+      </header>
+
+      <section id="me">
+        <h2>Me in 10 seconds</h2>
+        <p class="lede"><a href="#projects">Systems person</a>, <a href="#writing">product marketer</a>, <a href="#now">runner</a>, dad, and a firm believer that a well-built document can change what a group of people is able to do.</p>
+
+        <p class="chapter"><span class="era">(school years)</span> Trumpet player in the high school band. Sat in a gym this fall watching my daughter's friend play trumpet and was right back there.</p>
+        <p class="chapter"><span class="era">(work)</span> Senior product marketing manager at Airgain, working from home. My current obsession: a repeatable, data-driven win/loss program that turns lost deals into faster wins.</p>
+        <p class="chapter"><span class="era">(community)</span> Co-chair of the New Westminster DPAC. I build the infographics, meeting materials, and systems behind the scenes so other parents and PACs have what they need to be effective. Systems built right and shared are a force enabler.</p>
+        <p class="chapter"><span class="era">(running)</span> Marathon PB of 3:40. Chasing sub-3:30 and a Boston qualification at the Victoria Marathon in October 2027 — by way of HYROX this December and the BMO Half next May.</p>
+        <p class="chapter"><span class="era">(home)</span> Husband to Nicole, dad to Alex (19) and Ellie (17), and staff to Finley, a goldendoodle who runs the walking schedule.</p>
+
+        <h2 style="margin-top:3rem;">Me in 10 minutes<span class="q">?</span></h2>
+        <p>Short version: I like taking messy, recurring problems and turning them into systems other people can run without me. It is the same instinct whether the problem is a sales team's lost deals, a school district's parent communication, or my own training plan. The longer version is in the <a href="#writing">writing</a> below — that's where I think out loud.</p>
+      </section>
+
+      <section id="now">
+        <h2>What am I doing now<span class="q">?</span></h2>
+        <div class="now-box">
+          <ul>
+            <li><strong>Training:</strong> final block before HYROX men's doubles on December 20, 2026 — strength twice a week, intervals Wednesdays, back primer every morning.</li>
+            <li><strong>Work:</strong> standing up the win/loss program at Airgain with our sales directors — interview cadence, a shared evidence base, and findings the team actually uses.</li>
+            <li><strong>Community:</strong> DPAC season — board updates, meeting packages, and making nwdpac.ca more of a hub for PACs and parents.</li>
+            <li><strong>Writing:</strong> a nightly Homework for Life entry — one story-worthy moment, one gratitude, one stress, one thing learned — and shaping the best of them into posts.</li>
+            <li><strong>Quietly:</strong> trying to sleep more than six hours a night. It is going about as well as you'd expect.</li>
+          </ul>
+        </div>
+        <p class="updated">Last updated November 2026 · New Westminster, BC</p>
+      </section>
+
+      <section id="writing">
+        <h2>Writing</h2>
+        <p>Notes on marketing, AI, running, and the systems underneath all three. Newest first.</p>
+
+        <div class="filters" role="group" aria-label="Filter writing by topic">
+          <button type="button" data-filter="all" aria-pressed="true">all</button>
+          <button type="button" data-filter="marketing" aria-pressed="false">marketing</button>
+          <button type="button" data-filter="ai" aria-pressed="false">ai</button>
+          <button type="button" data-filter="running" aria-pressed="false">running</button>
+          <button type="button" data-filter="life" aria-pressed="false">life</button>
+        </div>
+
+        <div id="post-list">
+          <article class="post" data-topic="marketing">
+            <div class="date">11.18<br />2026</div>
+            <div>
+              <h3><a href="#writing">Win/loss is a system, not a survey</a></h3>
+              <p class="topic">Marketing</p>
+              <p class="summary">What I'm building at Airgain: a standing interview cadence, one shared evidence base, and findings written for the people who can act on them.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="running">
+            <div class="date">11.09<br />2026</div>
+            <div>
+              <h3><a href="#writing">The 3:40 problem</a></h3>
+              <p class="topic">Running</p>
+              <p class="summary">My marathon personal best, and the honest arithmetic of taking ten minutes off it — what has to change, and what I'm not willing to trade for it.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="ai">
+            <div class="date">10.30<br />2026</div>
+            <div>
+              <h3><a href="#writing">AI for teachers, tested at my kitchen table</a></h3>
+              <p class="topic">AI</p>
+              <p class="summary">A faster way to turn a comment bank into report-card comments, tested first by the teacher I live with. The bar: it has to give her an evening back.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="life">
+            <div class="date">10.21<br />2026</div>
+            <div>
+              <h3><a href="#writing">Homework for Life: the first entries</a></h3>
+              <p class="topic">Life</p>
+              <p class="summary">A sentence or two a night — a story-worthy moment, a gratitude, a stress, a lesson. Early returns: cottage cheese bagels, a high school band, and the word "situationship."</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="marketing">
+            <div class="date">10.12<br />2026</div>
+            <div>
+              <h3><a href="#writing">Nobody reads your launch plan</a></h3>
+              <p class="topic">Marketing</p>
+              <p class="summary">So build the launch out of pieces people will actually open: one page for sales, one for support, one honest FAQ. Documents as distribution.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="running">
+            <div class="date">09.28<br />2026</div>
+            <div>
+              <h3><a href="#writing">Training at 6 AM is a logistics problem</a></h3>
+              <p class="topic">Running</p>
+              <p class="summary">Shoes by the door, banana on the counter, dog walked, session done before the first meeting. The workout is the easy part; the system around it is the training.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="ai">
+            <div class="date">09.15<br />2026</div>
+            <div>
+              <h3><a href="#writing">A prompt is just a good brief</a></h3>
+              <p class="topic">AI</p>
+              <p class="summary">Everything product marketing taught me about briefing an agency applies to briefing a model: audience, context, constraints, and what "good" looks like.</p>
+            </div>
+          </article>
+
+          <article class="post" data-topic="life">
+            <div class="date">09.02<br />2026</div>
+            <div>
+              <h3><a href="#writing">Systems are a love language</a></h3>
+              <p class="topic">Life</p>
+              <p class="summary">On building the guide, the template, and the meeting package instead of giving the speech — and why I'd rather hand parents a tool than a microphone.</p>
+            </div>
+          </article>
+        </div>
+        <p class="empty-note" id="empty-note" hidden>Nothing here yet under that topic.</p>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+          <h3>Win/loss insights program <span class="status">Airgain · in progress</span></h3>
+          <p>A systematized, repeatable way to learn from every closed deal — interviews, data, and a rhythm of findings that help the next deal convert faster.</p>
+        </div>
+
+        <div class="project">
+          <h3>DPAC parent toolkit <span class="status">New Westminster · ongoing</span></h3>
+          <p>Infographics, guides, and meeting materials for SD40 parents and PACs — including a plain-language path for resolving concerns, and a website that works as a hub rather than a noticeboard.</p>
+        </div>
+
+        <div class="project">
+          <h3>AI tips for teachers <span class="status">Testing · 2026</span></h3>
+          <p>Practical AI workflows for the work teachers actually drown in — starting with report-card comments, then lesson resources, parent emails, and marking. Tested one-to-one before anything is published.</p>
+        </div>
+
+        <div class="project">
+          <h3>The sub-3:30 project <span class="status">2026 – 2027</span></h3>
+          <p>HYROX in December 2026, the BMO Half in May 2027, and the Victoria Marathon in October 2027. One long experiment in showing up at 6 AM.</p>
+        </div>
+
+        <div class="project">
+          <h3>Homework for Life log <span class="status">Nightly</span></h3>
+          <p>A running nightly record — story-worthy moment, gratitude, stress, lesson — kept in a simple sheet, mined occasionally for the writing above.</p>
+        </div>
+      </section>
+
+      <footer id="hello">
+        <h2>Say hello</h2>
+        <p>I like meeting people who build useful things — marketers, runners, parents doing PAC work, teachers curious about AI. The fastest way to find me:</p>
+        <p class="elsewhere">
+          <a href="https://www.instagram.com/dailystoicrunner/">@dailystoicrunner</a> — the running log<br />
+          <a href="https://www.instagram.com/royalcitydad/">@royalcitydad</a> — New West dad life<br />
+          <a href="https://www.instagram.com/mr.finley.thegoldendoodle/">@mr.finley.thegoldendoodle</a> — the dog, honestly the most popular of us
+        </p>
+        <p class="colophon">Prototype home page for Cyrus Sy, blending the plain-spoken styles of clairevo.com and sive.rs — Claire Vo's dated stream and highlighted links, Derek Sivers' “me in 10 seconds” and /now page. Set in Newsreader and IBM Plex Mono.</p>
+      </footer>
+
+    </div>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll(".filters button");
+        var posts = document.querySelectorAll("#post-list .post");
+        var emptyNote = document.getElementById("empty-note");
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var filter = btn.getAttribute("data-filter");
+            buttons.forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+            var visible = 0;
+            posts.forEach(function (post) {
+              var show = filter === "all" || post.getAttribute("data-topic") === filter;
+              post.hidden = !show;
+              if (show) visible++;
+            });
+            emptyNote.hidden = visible !== 0;
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
